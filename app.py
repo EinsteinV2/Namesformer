@@ -62,19 +62,19 @@ class MinimalTransformer(nn.Module):
         x = self.output_layer(x)
         return x
 
-model_path_vyr = r"C:\Users\Emilis\Desktop\streamlit_name_generator\namesformer_model_male.pt"
+model_path_vyr = r"namesformer_model_male.pt"
 model_vyr = torch.load(model_path_vyr)
 model_vyr.eval()
 
-model_path_mot = r"C:\Users\Emilis\Desktop\streamlit_name_generator\namesformer_model_female.pt"
+model_path_mot = r"namesformer_model_female.pt"
 model_mot = torch.load(model_path_mot)
 model_mot.eval()
 
 
-dataset_vyr = NameDataset(r"C:\Users\Emilis\Desktop\streamlit_name_generator\vardai_vyr.txt")
+dataset_vyr = NameDataset(r"vardai_vyr.txt")
 
 
-dataset_mot = NameDataset(r"C:\Users\Emilis\Desktop\streamlit_name_generator\vardai_mot.txt")
+dataset_mot = NameDataset(r"vardai_mot.txt")
 
 
 def sample_vyr(model_vyr, dataset, start_str='a', max_length=13,temperature=0.001):
