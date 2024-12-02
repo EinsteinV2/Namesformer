@@ -3,7 +3,5 @@ torch
 torch.optim                                            
 numpy                                                      
 pandas                                                    
-matplotlib.pyplot                                         
-torch.utils.data                         
-torch.nn.utils.rnn                              
+matplotlib                                                                   
 unicodedata 
