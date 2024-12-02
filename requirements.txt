@@ -4,4 +4,3 @@ torch.optim
 numpy                                                      
 pandas                                                    
 matplotlib                                                                   
-unicodedata 
