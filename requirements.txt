@@ -2,8 +2,8 @@ streamlit
 torch
 torch.optim                                            
 numpy                                                      
-import pandas as pd                                                     
-import matplotlib.pyplot as plt                                         
-from torch.utils.data import DataLoader, Dataset                        
-from torch.nn.utils.rnn import pad_sequence                             
+pandas as pd                                                     
+matplotlib.pyplot as plt                                         
+torch.utils.data import DataLoader, Dataset                        
+torch.nn.utils.rnn import pad_sequence                             
 unicodedata 
