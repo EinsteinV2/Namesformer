@@ -4,3 +4,4 @@ torch.optim
 numpy                                                      
 pandas                                                    
 matplotlib                                                                   
+bs4
