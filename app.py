@@ -77,7 +77,7 @@ dataset_vyr = NameDataset(r"vardai_vyr.txt")
 dataset_mot = NameDataset(r"vardai_mot.txt")
 
 
-def sample_vyr(model_vyr, dataset, start_str='a', max_length=13,temperature=0.001):
+def sample_vyr(model_vyr, dataset, start_str='a', max_length=13,temperature=0.0001):
     assert temperature > 0
     model_vyr.eval()  # Switch to evaluation mode
     with torch.no_grad():
@@ -114,7 +114,7 @@ def sample_vyr(model_vyr, dataset, start_str='a', max_length=13,temperature=0.00
 
         return output_name
     
-def sample_mot(model_mot, dataset, start_str='a', max_length=11,temperature=0.001):
+def sample_mot(model_mot, dataset, start_str='a', max_length=11,temperature=0.0001):
     assert temperature > 0
     model_mot.eval()  # Switch to evaluation mode
     with torch.no_grad():
@@ -153,7 +153,8 @@ st.title("Lithuanian Name Generator")
 st.write("Generate Lithuanian male or female names starting with specific letters.")
 
 # User Inputs
-prefix = st.text_input("Enter up to 5 starting LOWERCASE letters:", max_chars=5)
+prefix1 = st.text_input("Enter up to 5 starting LOWERCASE letters:", max_chars=5)
+prefix = prefix1.lower()
 gender = st.radio("Select Gender:", ("Male", "Female"))
 temperature = st.slider("Set Creativity:", min_value=0.001, max_value=1.5, value=1.0, step=0.01)
 
