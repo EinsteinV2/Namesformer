@@ -153,9 +153,9 @@ st.title("Lithuanian Name Generator")
 st.write("Generate Lithuanian male or female names starting with specific letters.")
 
 # User Inputs
-prefix = st.text_input("Enter up to 5 starting LOWERCASE letters:", max_chars=5)
+prefix = st.text_input("Enter up to 5 starting letters:", max_chars=5)
 gender = st.radio("Select Gender:", ("Male", "Female"))
-temperature = st.slider("Set Creativity:", min_value=0.001, max_value=1.5, value=1.0, step=0.01)
+temperature = st.slider("Set Creativity:", min_value=0.001, max_value=1.5, value=0.75, step=0.01)
 
 # Generate Name Button
 if st.button("Generate Name"):
