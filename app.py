@@ -21,7 +21,7 @@ class NameDataset(Dataset):
         self.names = self._preprocess_names(pd.read_csv(csv_file)['name'].values)
 
         # Build vocabulary (characters + padding space)
-        lithuanian_letters = "ąčęėįšųū"
+        lithuanian_letters = "ąčęėįšųūž"
         self.chars = sorted(list(set(''.join(self.names)+ lithuanian_letters + ' ')))  # Including a padding character
         self.char_to_int = {c: i for i, c in enumerate(self.chars)}
         self.int_to_char = {i: c for c, i in self.char_to_int.items()}
