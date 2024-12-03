@@ -153,8 +153,7 @@ st.title("Lithuanian Name Generator")
 st.write("Generate Lithuanian male or female names starting with specific letters.")
 
 # User Inputs
-prefix1 = st.text_input("Enter up to 5 starting LOWERCASE letters:", max_chars=5)
-prefix = prefix1.lower()
+prefix = st.text_input("Enter up to 5 starting LOWERCASE letters:", max_chars=5)
 gender = st.radio("Select Gender:", ("Male", "Female"))
 temperature = st.slider("Set Creativity:", min_value=0.001, max_value=1.5, value=1.0, step=0.01)
 
@@ -168,10 +167,10 @@ if st.button("Generate Name"):
         try:
             # Call the appropriate sample function based on gender
             if gender == "Male":
-                name = sample_vyr(model_vyr,dataset_vyr, start_str=prefix, max_length=13, temperature=temperature)
+                name = sample_vyr(model_vyr,dataset_vyr, start_str=prefix.lower(), max_length=13, temperature=temperature)
                 Name = name.capitalize()
             else:
-                name = sample_mot(model_mot, dataset_mot, start_str=prefix, max_length=11, temperature=temperature)
+                name = sample_mot(model_mot, dataset_mot, start_str=prefix.lower(), max_length=11, temperature=temperature)
                 Name = name.capitalize()
             
             st.success(f"Generated Name: {Name}")
