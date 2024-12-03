@@ -74,8 +74,6 @@ model_mot.eval()
 dataset_vyr = NameDataset(r"vardai_vyr.txt")
 dataset_mot = NameDataset(r"vardai_mot.txt")
 
-restricted_letters = ['ą','ę','ė','į','ų','ū']
-
 def sample_vyr(model_vyr, dataset, start_str='a', max_length=13,temperature=0.0001):
     assert temperature > 0
     model_vyr.eval()  # Switch to evaluation mode
@@ -96,16 +94,6 @@ def sample_vyr(model_vyr, dataset, start_str='a', max_length=13,temperature=0.00
             # Sample a character from the probability distribution
             next_char_idx = torch.multinomial(probabilities, 1).item()
             next_char = dataset.int_to_char[next_char_idx]
-
-            # Restriction: if the last character is a restricted letter, next_char cannot be a vowel
-            if output_name[-1] in restricted_letters and next_char in vowels:
-                # Re-sample a character until it is not a vowel
-                possible_indices = [idx for idx, char in enumerate(dataset.int_to_char.values())
-                                     if char not in vowels]
-                probabilities_filtered = probabilities[possible_indices]
-                next_char_idx = torch.multinomial(probabilities_filtered, 1).item()
-                next_char = dataset.int_to_char[possible_indices[next_char_idx]]
-
 
             if next_char == ' ':  # Assume ' ' is your end-of-sequence character
                 break
@@ -144,17 +132,6 @@ def sample_mot(model_mot, dataset, start_str='a', max_length=11,temperature=0.00
             next_char_idx = torch.multinomial(probabilities, 1).item()
             next_char = dataset.int_to_char[next_char_idx]
             
-            
-            # Restriction: if the last character is a restricted letter, next_char cannot be a vowel
-            if output_name[-1] in restricted_letters and next_char in vowels:
-                # Re-sample a character until it is not a vowel
-                possible_indices = [idx for idx, char in enumerate(dataset.int_to_char.values())
-                                     if char not in vowels]
-                probabilities_filtered = probabilities[possible_indices]
-                next_char_idx = torch.multinomial(probabilities_filtered, 1).item()
-                next_char = dataset.int_to_char[possible_indices[next_char_idx]]
-
-
             if next_char == ' ':  # Assume ' ' is your end-of-sequence character
                 break
 
